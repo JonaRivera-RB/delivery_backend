@@ -11,6 +11,6 @@ module.exports = (app) => {
     app.put('/api/orders/updateToDispatched', passport.authenticate('jwt', { session: false }), ordersController.updateToDispatched);
     app.put('/api/orders/updateToOnTheWay', passport.authenticate('jwt', { session: false }), ordersController.updateToOnTheWay);
     app.put('/api/orders/updateToDelivery', passport.authenticate('jwt', { session: false }), ordersController.updateToDelivery);
-
     app.get('/api/orders/findByDeliveryAndStatus/:id_delivery/:status', passport.authenticate('jwt', { session: false }), ordersController.findByDeliveryAndStatus);
+    app.put('/api/orders/updateLatLng', passport.authenticate('jwt', { session: false }), ordersController.updateLatLng);
 }

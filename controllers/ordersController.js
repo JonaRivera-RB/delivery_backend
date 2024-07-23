@@ -163,4 +163,24 @@ module.exports = {
             })
         }
     },
+
+    async updateLatLng(request, response, next) {
+        try {
+            let order = request.body;
+
+            await Order.updateLatLng(order);
+
+            return response.status(201).json({
+                success: true,
+                message: 'La orden se actualizo correctamente',
+            })
+        } catch (error) {
+            console.log(`Error ${error}`);
+            return response.status(501).json({
+                success: false,
+                message: 'Hubo un error creando la orden',
+                error: error
+            })
+        }
+    },
 }
