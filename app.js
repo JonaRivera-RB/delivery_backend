@@ -19,17 +19,26 @@ const passport = require('passport');
 // Import the 'express-session' module for session management
 const session = require('express-session');
 
+const mercadoPago = require('mercadopago');
+
 // Import the users router from the './routes/users' file to handle user-related routes
 const usersRouter = require('./routes/usersRoutes');
 const categoriesRouter = require('./routes/categoriesRoutes');
 const productsRouter = require('./routes/productsRoutes');
 const addressRouter = require('./routes/addressRoutes');
 const ordersRouter = require('./routes/orderRoutes');
+const mercadoPagoRouter = require('./routes/mercadoPagoRoutes');
 
 const multer = require('multer');
 const serviceAccount = require('./serviceAccountKey.json')
 const admin = require('firebase-admin');
 const categoriesController = require('./controllers/categoriesController');
+
+// Configurar el cliente de MercadoPago
+mercadoPago.configure({
+    sandbox: true,
+    access_token: 'TEST-4723731826179182-072401-7ead923c4525b55d21165fb5eb5299fc-424674793'
+});
 
 admin.initializeApp( {
     credential: admin.credential.cert(serviceAccount)
@@ -78,6 +87,7 @@ categoriesRouter(app, upload);
 productsRouter(app, upload);
 addressRouter(app);
 ordersRouter(app);
+mercadoPagoRouter(app);
 
 // Export the Express application for use in other files
 module.exports = app;

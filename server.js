@@ -24,6 +24,6 @@ orderDeliverySocket(io);
 // The server listens for requests on the specified port and IP address '192.168.1.64'.
 // Once the server has started successfully, the callback function is executed and a message is printed to the console.
 //ipconfig getifaddr en0 obtener ip conectado a wifi || localhost
-server.listen(port, '192.168.1.103', () => {
+server.listen(port, '192.168.1.180', () => {
     console.log(`Node.js application started on port ${port}`);
 });
